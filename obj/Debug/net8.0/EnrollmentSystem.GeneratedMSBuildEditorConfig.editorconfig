@@ -26,12 +26,40 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\ASP_PROJECTS\EnrollmentSystem
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/ASP_PROJECTS/EnrollmentSystem/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+[D:/ASP_PROJECTS/EnrollmentSystem/Areas/Admin/Views/Applicant/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXBwbGljYW50XEFkZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/ASP_PROJECTS/EnrollmentSystem/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+[D:/ASP_PROJECTS/EnrollmentSystem/Areas/Admin/Views/Applicant/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXBwbGljYW50XEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP_PROJECTS/EnrollmentSystem/Areas/Admin/Views/Applicant/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXBwbGljYW50XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP_PROJECTS/EnrollmentSystem/Areas/Admin/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP_PROJECTS/EnrollmentSystem/Areas/Admin/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP_PROJECTS/EnrollmentSystem/Areas/Student/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3R1ZGVudFxWaWV3c1xIb21lXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP_PROJECTS/EnrollmentSystem/Areas/Student/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3R1ZGVudFxWaWV3c1xIb21lXFByaXZhY3kuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP_PROJECTS/EnrollmentSystem/Areas/Student/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3R1ZGVudFxfVmlld0ltcG9ydHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP_PROJECTS/EnrollmentSystem/Areas/Student/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcU3R1ZGVudFxfVmlld1N0YXJ0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/ASP_PROJECTS/EnrollmentSystem/Views/Shared/Error.cshtml]

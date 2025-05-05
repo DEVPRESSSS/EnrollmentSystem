@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
 using System.Reflection.Metadata;
 
 namespace EnrollmentSystem.Models
@@ -8,7 +9,6 @@ namespace EnrollmentSystem.Models
 
 
         [Key]
-        [Required]
         public string? ApplicantID { get; set; }
 
         [Required(ErrorMessage ="Firstname is required")]
@@ -34,6 +34,7 @@ namespace EnrollmentSystem.Models
 
         [Required]
         public string? ApplicationStatus { get; set; }
+       
 
         public ICollection<Document>? Documents { get; set; }
         public ICollection<ProgramEnrollment>? Enrollments { get; set; }

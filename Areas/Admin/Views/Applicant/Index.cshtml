@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Applicant>
+
+
+
+<table id="myTable" class="table table-bordered table-stripe bg-light">
+	<thead>
+		<tr class="text-center">
+			<th>
+				ApplicantID
+			</th>
+			<th>
+				FirstName
+			</th>
+			<th>
+				MiddleName
+			</th>
+			<th>
+				LastName
+			</th>
+			<th>
+				Email
+			</th>
+			<th>
+				PhoneNumber
+			</th>
+
+			<th>
+				DateOfBirth
+
+			</th>
+
+
+			<th>
+				Address
+			</th>
+
+			<th>
+				Status
+			</th>
+			<th>
+				Action
+			</th>
+
+		</tr>
+	</thead>
+
+
+	<tbody>
+
+
+			 @foreach (var applicant in Model)
+			 {
+				<tr>
+					<td>@applicant.ApplicantID</td>
+					<td>@applicant.FirstName</td>
+					<td>@applicant.MiddleName</td>
+					<td>@applicant.LastName</td>
+					<td>@applicant.Email</td>
+					<td>@applicant.PhoneNumber</td>
+					<td>@applicant.DateOfBirth.ToString("yyyy-MM-dd")</td>
+					<td>@applicant.Address</td>
+					<td>@applicant.ApplicationStatus</td>
+		     		<td>
+	      				<a class="btn btn-success btn-sm" asp-route-id="@applicant.ApplicantID" asp-action="Edit"> Edit </a>
+						<a class="btn btn-danger btn-sm"> Delete </a>
+					</td>
+				</tr>
+			 }
+	</tbody>
+
+
+</table>
