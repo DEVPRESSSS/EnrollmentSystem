@@ -14,6 +14,6 @@ namespace EnrollmentSystem.Models
         [Required]
         public string? CourseCode { get; set; }
 
-        public ICollection<Programs> Programs { get; set; }
+        public ICollection<Programs>? Programs { get; set; }
     }
 }

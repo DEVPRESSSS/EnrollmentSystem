@@ -1,0 +1,42 @@
+﻿@model List<Department>
+
+<a class="btn btn-success btn-sm" asp-area="Admin" asp-controller="Department" asp-action="Upsert"> Create </a>
+
+<table id="myTable" class="table table-bordered table-stripe bg-light">
+	<thead>
+		<tr class="text-center">
+			<th>
+				DepartmentID
+			</th>
+			<th>
+				DepartmentName
+			</th>
+			<th>
+				CourseCode
+			</th>
+			
+
+		</tr>
+	</thead>
+
+
+	<tbody>
+
+
+		@foreach (var department in Model)
+		{
+			<tr>
+				<td>@department.DepartmentID</td>
+				<td>@department.DepartmentName</td>
+				<td>@department.CourseCode</td>
+				<td>
+					<a class="btn btn-success btn-sm" asp-route-id="@department.DepartmentID" asp-action="Upsert"> Edit </a>
+					<a class="btn btn-danger btn-sm" asp-area="Admin" asp-controller="Department"
+					   asp-route-id="@department.DepartmentID" asp-action="Delete"> Delete </a>
+				</td>
+			</tr>
+		}
+	</tbody>
+
+
+</table>

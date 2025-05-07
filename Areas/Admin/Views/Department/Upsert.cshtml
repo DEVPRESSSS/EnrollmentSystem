@@ -1,0 +1,40 @@
+﻿@model Department
+
+
+<h2>@ViewBag.Message</h2>
+<form method="post">
+    <input type="hidden" asp-for="DepartmentID" />
+
+    <div class="card">
+        <div class="row pb-2">
+            <h2 class="text-dark text-center m-2">
+                @(Model.DepartmentID != null ? "Edit Department" : "Create Department")
+            </h2>
+        </div>
+
+        <div class="card-body p-4">
+            <div class="border p-2 mt-4">
+                <div class="mb-2">
+                    <label asp-for="DepartmentName" class="p-0"></label>
+                    <input asp-for="DepartmentName" maxlength="50" class="form-control" />
+                    <span asp-validation-for="DepartmentName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-2">
+                    <label asp-for="CourseCode" class="p-0"></label>
+                    <input asp-for="CourseCode" maxlength="50" class="form-control" />
+                    <span asp-validation-for="CourseCode" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-6 col-md-3">
+                        <button type="submit" class="btn btn-primary form-control">Submit</button>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <a asp-area="Admin" asp-controller="Department" asp-action="Index" class="btn btn-outline-secondary border form-control">Back to list</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

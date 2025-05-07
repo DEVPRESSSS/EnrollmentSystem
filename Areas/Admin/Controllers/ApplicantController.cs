@@ -5,6 +5,8 @@ using System.Drawing.Printing;
 
 namespace EnrollmentSystem.Areas.Admin.Controllers
 {
+
+    //[Area("Admin")]
     public class ApplicantController : Controller
     {
 
@@ -21,6 +23,37 @@ namespace EnrollmentSystem.Areas.Admin.Controllers
 
             return View(applicants);
         }
+
+		public IActionResult Create()
+		{
+
+
+
+			return View();
+		}
+
+
+        [HttpPost]
+        public IActionResult Create(EnrollmentSystem.Models.Applicant obj)
+        {
+
+
+
+            if (ModelState.IsValid)
+            {
+
+                string id = $"Applicant{Guid.NewGuid().ToString("N").Substring(0, 8).ToUpper()}";
+
+                obj.ApplicantID = id;
+
+                _context.Applicants.Add(obj);
+                _context.SaveChanges();
+            }
+
+
+            return RedirectToAction("Index");
+        }
+
 
         public IActionResult Edit(string id)
         {

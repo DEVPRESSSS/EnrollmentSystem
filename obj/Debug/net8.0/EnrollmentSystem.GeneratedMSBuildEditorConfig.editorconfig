@@ -30,12 +30,24 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXBwbGljYW50XEFkZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/ASP_PROJECTS/EnrollmentSystem/Areas/Admin/Views/Applicant/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXBwbGljYW50XENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/ASP_PROJECTS/EnrollmentSystem/Areas/Admin/Views/Applicant/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXBwbGljYW50XEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/ASP_PROJECTS/EnrollmentSystem/Areas/Admin/Views/Applicant/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcQXBwbGljYW50XEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP_PROJECTS/EnrollmentSystem/Areas/Admin/Views/Department/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGVwYXJ0bWVudFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/ASP_PROJECTS/EnrollmentSystem/Areas/Admin/Views/Department/Upsert.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQWRtaW5cVmlld3NcRGVwYXJ0bWVudFxVcHNlcnQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/ASP_PROJECTS/EnrollmentSystem/Areas/Admin/_ViewImports.cshtml]

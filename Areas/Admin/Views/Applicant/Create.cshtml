@@ -1,16 +1,14 @@
-﻿
-@model Applicant
+﻿@model Applicant
 
 
 <div class="card">
 	<div class="row pb-2">
-		<h2 class="text-dark text-center m-2">Edit Applicant</h2>
+		<h2 class="text-dark text-center m-2">Create Applicant</h2>
 
 	</div>
 
 	<div class="card-body p-4">
 		<form method="post">
-			<input asp-for="ApplicantID" hidden />
 			<div class="border p-2 mt-4">
 
 
@@ -43,7 +41,8 @@
 					<label asp-for="Address" class="p-0"></label>
 					<input asp-for="Address" maxlength="50" class="form-control" />
 					<span asp-validation-for="Address" class="text-danger"></span>
-				</
+				</div>
+
 				<div class="mb-2">
 						<label asp-for="ApplicationStatus" class="p-0"></label>
 						<input asp-for="ApplicationStatus" maxlength="50" class="form-control" />
@@ -51,19 +50,18 @@
 				</div>
 
 				<div class="row">
-					<div class="col-6 col-md-3">
-						<button type="submit" class="btn btn-primary form-control">Submit</button>
-					</div>
-					<div class="col-6 col-md-3">
-						<a asp-area="Admin" asp-controller="Applicant" asp-action="Index" class="btn btn-outline-secondary border form-control">Back to list</a>
-					</div>
-					</div>
-
-
-
+						<div class="col-6 col-md-3">
+							<button type="submit" class="btn btn-primary form-control">Submit</button>
+						</div>
+						<div class="col-6 col-md-3">
+							<a asp-area="Admin" asp-controller="Applicant" asp-action="Index" class="btn btn-outline-secondary border form-control">Back to list</a>
+						</div>
 				</div>
-			</div>
 
+
+
+
+			</div>
 		</form>
 
 	</div>
