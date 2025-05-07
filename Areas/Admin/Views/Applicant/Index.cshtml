@@ -62,7 +62,8 @@
 					<td>@applicant.ApplicationStatus</td>
 		     		<td>
 	      				<a class="btn btn-success btn-sm" asp-route-id="@applicant.ApplicantID" asp-action="Edit"> Edit </a>
-						<a class="btn btn-danger btn-sm"> Delete </a>
+						<a class="btn btn-danger btn-sm" asp-area="Admin" asp-controller="Applicant"
+							asp-route-id="@applicant.ApplicantID" asp-action="Delete"> Delete </a>
 					</td>
 				</tr>
 			 }
