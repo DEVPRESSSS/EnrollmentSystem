@@ -11,7 +11,7 @@ namespace EnrollmentSystem.Models
         public string? ApplicantID { get; set; }
 
         [ForeignKey("ApplicantID")]
-        public Applicant? Applicant { get; set; }
+        public ApplicationUser? AppUser { get; set; }
 
         public string? ProgramID { get; set; }
         [ForeignKey("ProgramID")]

@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EnrollmentSystem.Areas.Admin.Controllers
 {
+
+	[Area("Admin")]
 	public class DepartmentController : Controller
 	{
 		private ApplicationDbContext _context;

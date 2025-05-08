@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace EnrollmentSystem.Areas.Applicant.Controllers
 {
-    //[Area("Applicant")]
+    [Area("Student")]
 
     public class HomeController : Controller
     {
