@@ -1,0 +1,168 @@
+﻿@model IEnumerable<Programs>
+@{
+    ViewData["Title"] = "Available Programs";
+}
+
+<div class="container py-4">
+    <!-- Page Header -->
+    <div class="bg-white rounded p-3 mb-4 shadow-sm">
+        <h1 class="mb-0">Available Programs</h1>
+    </div>
+
+    <!-- Filter Section -->
+    <div class="bg-white rounded p-4 mb-4 shadow-sm">
+        <form id="filterForm" method="get" action="">
+            <div class="row g-3">
+                <!-- Search Box -->
+                <div class="col-md-4">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="searchTerm" name="searchTerm" placeholder="Search programs...">
+                        <label for="searchTerm">Search programs...</label>
+                    </div>
+                </div>
+
+                <!-- Category Dropdown -->
+                <div class="col-md-3">
+                    <div class="form-floating">
+                        <select class="form-select" id="category" name="category">
+                            <option value="">-- All Categories --</option>
+                            <option value="1">Computer Science</option>
+                            <option value="2">Nursing</option>
+                            <option value="3">Business</option>
+                            <option value="4">Engineering</option>
+                            <option value="5">Arts & Humanities</option>
+                        </select>
+                        <label for="category">Category</label>
+                    </div>
+                </div>
+
+                <!-- Sort Dropdown -->
+                <div class="col-md-3">
+                    <div class="form-floating">
+                        <select class="form-select" id="sortBy" name="sortBy">
+                            <option value="deadline">Application Deadline</option>
+                            <option value="startdate">Start Date</option>
+                            <option value="name">Program Name</option>
+                            <option value="popularity">Popularity</option>
+                        </select>
+                        <label for="sortBy">Sort By</label>
+                    </div>
+                </div>
+
+                <!-- Apply Button -->
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-primary w-100 h-100">Apply</button>
+                </div>
+            </div>
+
+            <!-- Advanced Filters Toggle -->
+            <div class="mt-3">
+                <a class="text-decoration-none" data-bs-toggle="collapse" href="#advancedFilters" role="button" aria-expanded="false">
+                    Advanced Filters <i class="bi bi-chevron-down"></i>
+                </a>
+            </div>
+
+            <!-- Advanced Filters Panel -->
+            <div class="collapse mt-3" id="advancedFilters">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Start Date Range</label>
+                        <div class="input-group">
+                            <input type="date" class="form-control" id="startDateFrom" name="startDateFrom">
+                            <span class="input-group-text">to</span>
+                            <input type="date" class="form-control" id="startDateTo" name="startDateTo">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Duration (months)</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="durationMin" name="durationMin" min="0">
+                            <span class="input-group-text">to</span>
+                            <input type="number" class="form-control" id="durationMax" name="durationMax" min="0">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Programs Grid -->
+
+        <div class="row g-4">
+           @foreach (var programOffered in Model)
+            {
+
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 shadow-sm program-card">
+                    <!-- Program Image -->
+                    <div class="card-img-top program-image-placeholder bg-light d-flex align-items-center justify-content-center">
+                        <span class="fs-1 text-secondary">🎓</span>
+                    </div>
+
+                    <!-- Program Info -->
+                    <div class="card-body">
+                        <h5 class="card-title">@programOffered.Title</h5>
+                        <p class="card-text program-description text-secondary">@programOffered.Description.</p>
+
+                        <ul class="list-unstyled program-details text-secondary small mb-0">
+                            <li class="mb-1">
+                                <i class="bi bi-calendar"></i> Starts: Sep 1, 2025
+                            </li>
+                            <li class="mb-1">
+                                <i class="bi bi-hourglass"></i> Duration: 24 months
+                            </li>
+                            <li class="mb-1">
+                                <i class="bi bi-clock"></i> Deadline: Jul 15, 2025
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="card-footer bg-white border-top-0 pt-0">
+                        <div class="d-flex gap-2">
+                            <a asp-area="Student" asp-controller="Home" 
+                                    asp-action="ViewProgramDetails" 
+                                    asp-route-id="@programOffered.ProgramID"  class="btn btn-info text-white flex-grow-1">
+                                View Details
+                            </a>
+                            <a href="#" class="btn btn-success flex-grow-1">
+                                Apply Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            }
+          
+       
+        </div>
+    
+
+    <!-- Pagination -->
+    <div class="d-flex justify-content-center mt-4">
+        <nav aria-label="Program pagination">
+            <ul class="pagination">
+                <li class="page-item active">
+                    <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">2</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" href="#">3</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+@* @section scripts {
+    <script>
+        $(document).ready(function () {
+            // Auto-submit form when sorting or category changes
+            $('#sortBy, #category').change(function () {
+                $('#filterForm').submit();
+            });
+        });
+    </script>
+} *@

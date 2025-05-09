@@ -1,0 +1,66 @@
+﻿@model Programs
+
+
+<h2>@ViewBag.Message</h2>
+<form method="post">
+    <input type="hidden" asp-for="ProgramID" />
+
+    <div class="card">
+        <div class="row pb-2">
+            <h2 class="text-dark text-center m-2">
+                @(Model.ProgramID != null ? "Edit program" : "Create program")
+            </h2>
+        </div>
+
+        <div class="card-body p-4">
+            <div class="border p-2 mt-4">
+                <div class="mb-2">
+                    <label asp-for="CourseCode" class="p-0"></label>
+                    <input asp-for="CourseCode" maxlength="50" class="form-control" />
+                    <span asp-validation-for="CourseCode" class="text-danger"></span>
+                </div>
+
+                <div class="mb-2">
+                    <label asp-for="Title" class="p-0"></label>
+                    <input asp-for="Title" maxlength="50" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="mb-2">
+                    <label asp-for="Description" class="p-0"></label>
+                    <input asp-for="Description" maxlength="50" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="mb-2">
+                    <label asp-for="Credits" class="p-0"></label>
+                    <input asp-for="Credits" maxlength="50" class="form-control" />
+                    <span asp-validation-for="Credits" class="text-danger"></span>
+                </div>
+
+                <div class="mb-2">
+                    <label asp-for="@Model.DepartmentID" class="p-0">Department</label>
+                    <select asp-for="@Model.DepartmentID" class="form-select" asp-items="@(ViewBag.DepartmentList)">
+                        <option value="">-- Select Department --</option>
+                    </select>
+                    <span asp-validation-for="@Model.DepartmentID" class="text-danger"></span>
+                </div>
+
+                <div class="mb-2">
+                    <label asp-for="MaxCapacity" class="p-0"></label>
+                    <input asp-for="MaxCapacity" maxlength="50" class="form-control" />
+                    <span asp-validation-for="MaxCapacity" class="text-danger"></span>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-6 col-md-3">
+                        <button type="submit" class="btn btn-primary form-control">Submit</button>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <a asp-area="Admin" asp-controller="Program" asp-action="Index" class="btn btn-outline-secondary border form-control">Back to list</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

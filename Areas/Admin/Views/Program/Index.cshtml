@@ -1,0 +1,64 @@
+﻿@model List<Programs>
+
+<a class="btn btn-success btn-sm mb-2" asp-area="Admin" asp-controller="Program" asp-action="Upsert"> Create </a>
+
+<table id="myTable" class="table table-bordered table-stripe bg-light">
+	<thead>
+		<tr class="text-center">
+			<th>
+				ProgramID
+			</th>
+			<th>
+				CourseCode
+			</th>
+			<th>
+				Title
+			</th>
+			<th>
+				Description
+			</th>
+			<th>
+				Credits
+			</th>
+			<th>
+				DepartmentID
+			</th>
+			<th>
+				IsAvailableForEnrollment
+			</th>
+			<th>
+				MaxCapacity
+			</th>
+			<th>
+				CurrentEnrollment
+			</th>
+		</tr>
+	</thead>
+
+
+	<tbody>
+
+
+		@foreach (var programs in Model)
+		{
+			<tr>
+				<td>@programs.ProgramID</td>
+				<td>@programs.CourseCode</td>
+				<td>@programs.Title</td>
+				<td>@programs.Description</td>
+				<td>@programs.Credits</td>
+				<td>@programs.Department?.DepartmentName</td>
+				<td>@programs.IsAvailableForEnrollment</td>
+				<td>@programs.MaxCapacity</td>
+				<td>@programs.CurrentEnrollment</td>
+				<td>
+					<a class="btn btn-success btn-sm" asp-route-id="@programs.ProgramID" asp-action="Upsert"> Edit </a>
+					<a class="btn btn-danger btn-sm" asp-area="Admin" asp-controller="Program"
+					   asp-route-id="@programs.ProgramID" asp-action="Delete"> Delete </a>
+				</td>
+			</tr>
+		}
+	</tbody>
+
+
+</table>

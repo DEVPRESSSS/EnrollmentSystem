@@ -1,0 +1,467 @@
+﻿@model Programs
+
+<input asp-for="ProgramID" hidden/>
+
+<div class="container py-4">
+    <!-- Breadcrumb navigation -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a asp-area="Student" asp-controller="Home" asp-action="Index">Home</a></li>
+            <li class="breadcrumb-item"><a asp-area="Student" asp-controller="Home" asp-action="AvailablePrograms">Programs</a></li>
+            <li class="breadcrumb-item active" aria-current="page">@Model.CourseCode</li>
+        </ol>
+    </nav>
+
+    <!-- Program Header Card -->
+    <div class="bg-white rounded shadow-sm mb-4 overflow-hidden">
+        <div class="bg-primary text-white p-4">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <h1 class="mb-0">@Model.Title</h1>
+                    <p class="mb-0 opacity-75">@Model.CourseCode | @Model.Department?.DepartmentName</p>
+                </div>
+                <span class="badge bg-light text-primary fs-5 p-2">@Model.Credits Credits</span>
+            </div>
+        </div>
+        
+        <!-- Status Banner -->
+        @if (Model.IsAvailableForEnrollment)
+        {
+            <div class="bg-success bg-opacity-10 p-3 border-bottom border-success">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="badge bg-success mb-2">Open for Enrollment</span>
+                        <h5 class="mb-1">@(Model.MaxCapacity - Model.CurrentEnrollment) seats available</h5>
+                        <p class="mb-0 text-muted">Application deadline: July 15, 2025</p>
+                    </div>
+                    <div class="text-end">
+                        <button class="btn btn-success btn-lg">Apply Now</button>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="bg-secondary bg-opacity-10 p-3 border-bottom border-secondary">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <span class="badge bg-secondary mb-2">Not Available</span>
+                        <h5 class="mb-1">This program is currently closed for enrollment</h5>
+                        <p class="mb-0 text-muted">Please check back later</p>
+                    </div>
+                    <div class="text-end">
+                        <button class="btn btn-outline-secondary btn-lg">Notify Me</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="row g-4">
+        <!-- Left Column - Main Details -->
+        <div class="col-lg-8">
+            <!-- Description Card -->
+            <div class="bg-white rounded shadow-sm p-4 mb-4">
+                <h2 class="border-bottom pb-3 mb-4">Program Description</h2>
+                <p class="lead mb-4">@Model.Description</p>
+                
+                <!-- Key Program Features -->
+                <h3 class="fs-4 mb-3">Program Highlights</h3>
+                <div class="row g-3 mb-4">
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                                <i class="bi bi-book fs-4 text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="fs-5 mb-0">Comprehensive Curriculum</h4>
+                                <p class="mb-0 text-muted small">Covers all essential topics</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                                <i class="bi bi-laptop fs-4 text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="fs-5 mb-0">Hands-on Learning</h4>
+                                <p class="mb-0 text-muted small">Practical experience included</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                                <i class="bi bi-people fs-4 text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="fs-5 mb-0">Expert Faculty</h4>
+                                <p class="mb-0 text-muted small">Learn from industry leaders</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-center">
+                            <div class="bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                                <i class="bi bi-briefcase fs-4 text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="fs-5 mb-0">Career Opportunities</h4>
+                                <p class="mb-0 text-muted small">High job placement rate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Learning Outcomes -->
+                <h3 class="fs-4 mb-3">Learning Outcomes</h3>
+                <div class="bg-light p-4 rounded mb-4">
+                    <ul class="mb-0">
+                        <li class="mb-2">Demonstrate proficiency in key subject areas</li>
+                        <li class="mb-2">Apply theoretical knowledge to solve real-world problems</li>
+                        <li class="mb-2">Develop critical thinking and analytical skills</li>
+                        <li class="mb-2">Communicate effectively in professional settings</li>
+                        <li>Work collaboratively in team environments</li>
+                    </ul>
+                </div>
+                
+                <!-- Prerequisites -->
+                <h3 class="fs-4 mb-3">Prerequisites</h3>
+                <p>Students should have completed introductory courses or have equivalent knowledge in this field. A background in related subjects is recommended but not required.</p>
+            </div>
+            
+            <!-- Program Structure -->
+            <div class="bg-white rounded shadow-sm p-4 mb-4">
+                <h2 class="border-bottom pb-3 mb-4">Program Structure</h2>
+                <p>This program is structured to provide both foundational knowledge and specialized skills in the field.</p>
+                
+                <!-- Timeline -->
+                <div class="mb-4">
+                    <h3 class="fs-4 mb-3">Program Timeline</h3>
+                    <div class="position-relative py-4">
+                        <div class="position-absolute top-0 bottom-0 start-0" style="width: 1px; background-color: #dee2e6; margin-left: 15px;"></div>
+                        
+                        <div class="d-flex mb-4">
+                            <div class="bg-primary rounded-circle p-2 me-3 position-relative" style="width: 32px; height: 32px; z-index: 1;">
+                                <i class="bi bi-1-circle-fill text-white position-absolute" style="top: 6px; left: 6px;"></i>
+                            </div>
+                            <div class="bg-light rounded p-3 flex-grow-1">
+                                <h4 class="fs-5">First Semester</h4>
+                                <p class="mb-0">Foundation courses and introduction to core concepts.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex mb-4">
+                            <div class="bg-primary rounded-circle p-2 me-3 position-relative" style="width: 32px; height: 32px; z-index: 1;">
+                                <i class="bi bi-2-circle-fill text-white position-absolute" style="top: 6px; left: 6px;"></i>
+                            </div>
+                            <div class="bg-light rounded p-3 flex-grow-1">
+                                <h4 class="fs-5">Second Semester</h4>
+                                <p class="mb-0">Advanced topics and specialized knowledge areas.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex">
+                            <div class="bg-primary rounded-circle p-2 me-3 position-relative" style="width: 32px; height: 32px; z-index: 1;">
+                                <i class="bi bi-3-circle-fill text-white position-absolute" style="top: 6px; left: 6px;"></i>
+                            </div>
+                            <div class="bg-light rounded p-3 flex-grow-1">
+                                <h4 class="fs-5">Final Project</h4>
+                                <p class="mb-0">Practical application of knowledge through capstone project.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Assessment Methods -->
+                <h3 class="fs-4 mb-3">Assessment Methods</h3>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="border rounded text-center p-3">
+                            <i class="bi bi-pencil-square fs-1 text-primary mb-2"></i>
+                            <h4 class="fs-5">Examinations</h4>
+                            <p class="mb-0 small text-muted">40% of grade</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="border rounded text-center p-3">
+                            <i class="bi bi-file-earmark-text fs-1 text-primary mb-2"></i>
+                            <h4 class="fs-5">Assignments</h4>
+                            <p class="mb-0 small text-muted">30% of grade</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="border rounded text-center p-3">
+                            <i class="bi bi-laptop fs-1 text-primary mb-2"></i>
+                            <h4 class="fs-5">Projects</h4>
+                            <p class="mb-0 small text-muted">30% of grade</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Column - Sidebar -->
+        <div class="col-lg-4">
+            <!-- Enrollment Card -->
+            <div class="bg-white rounded shadow-sm p-4 mb-4">
+                <h3 class="fs-4 mb-3">Program Details</h3>
+                
+                <div class="mb-3 pb-3 border-bottom">
+                    <div class="d-flex justify-content-between">
+                        <span class="text-muted">Program ID:</span>
+                        <span class="fw-bold">@Model.ProgramID</span>
+                    </div>
+                </div>
+                
+                <div class="mb-3 pb-3 border-bottom">
+                    <div class="d-flex justify-content-between">
+                        <span class="text-muted">Course Code:</span>
+                        <span class="fw-bold">@Model.CourseCode</span>
+                    </div>
+                </div>
+                
+                <div class="mb-3 pb-3 border-bottom">
+                    <div class="d-flex justify-content-between">
+                        <span class="text-muted">Credits:</span>
+                        <span class="fw-bold">@Model.Credits</span>
+                    </div>
+                </div>
+                
+                <div class="mb-3 pb-3 border-bottom">
+                    <div class="d-flex justify-content-between">
+                        <span class="text-muted">Department:</span>
+                        <span class="fw-bold">@Model.Department?.DepartmentName</span>
+                    </div>
+                </div>
+                
+                <div class="mb-3 pb-3 border-bottom">
+                    <div class="d-flex justify-content-between">
+                        <span class="text-muted">Start Date:</span>
+                        <span class="fw-bold">September 1, 2025</span>
+                    </div>
+                </div>
+                
+                <div class="mb-3 pb-3 border-bottom">
+                    <div class="d-flex justify-content-between">
+                        <span class="text-muted">Duration:</span>
+                        <span class="fw-bold">24 months</span>
+                    </div>
+                </div>
+                
+                <div class="mb-3 pb-3 border-bottom">
+                    <div class="d-flex justify-content-between">
+                        <span class="text-muted">Application Deadline:</span>
+                        <span class="fw-bold">July 15, 2025</span>
+                    </div>
+                </div>
+                
+                <div class="mb-3 pb-3 border-bottom">
+                    <div class="d-flex justify-content-between">
+                        <span class="text-muted">Location:</span>
+                        <span class="fw-bold">Main Campus</span>
+                    </div>
+                </div>
+                
+                <div class="mb-3 pb-3 border-bottom">
+                    <div class="d-flex justify-content-between">
+                        <span class="text-muted">Format:</span>
+                        <span class="fw-bold">On-campus</span>
+                    </div>
+                </div>
+                
+                <div class="mb-4">
+                    <div class="d-flex justify-content-between">
+                        <span class="text-muted">Tuition:</span>
+                        <span class="fw-bold">$X,XXX per semester</span>
+                    </div>
+                </div>
+                
+                <h4 class="fs-5 mb-3">Enrollment Status</h4>
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <span>Enrollment Progress</span>
+                    <span class="fw-bold">@Model.CurrentEnrollment/@Model.MaxCapacity</span>
+                </div>
+                
+                <div class="progress mb-4" style="height: 15px;">
+                    @{ var enrollmentPercentage = (int)((double)Model.CurrentEnrollment / Model.MaxCapacity * 100); }
+                    <div class="progress-bar @(enrollmentPercentage >= 90 ? "bg-danger" : "bg-success")" 
+                            role="progressbar" 
+                            style="width: @enrollmentPercentage%;" 
+                            aria-valuenow="@enrollmentPercentage" 
+                            aria-valuemin="0" 
+                            aria-valuemax="100">
+                        @enrollmentPercentage%
+                    </div>
+                </div>
+                
+                @if (Model.IsAvailableForEnrollment && Model.CurrentEnrollment < Model.MaxCapacity)
+                {
+                    <button class="btn btn-success w-100 mb-2">Apply Now</button>
+                    <button class="btn btn-outline-primary w-100">Save to Favorites</button>
+                }
+                else if (Model.IsAvailableForEnrollment && Model.CurrentEnrollment >= Model.MaxCapacity)
+                {
+                    <button class="btn btn-warning w-100 mb-2">Join Waitlist</button>
+                    <button class="btn btn-outline-primary w-100">Save to Favorites</button>
+                }
+                else
+                {
+                    <button class="btn btn-outline-secondary w-100 mb-2">Notify When Available</button>
+                    <button class="btn btn-outline-primary w-100">Save to Favorites</button>
+                }
+            </div>
+            
+            <!-- Contact Card -->
+            <div class="bg-white rounded shadow-sm p-4 mb-4">
+                <h3 class="fs-4 mb-3">Contact Information</h3>
+                
+                <div class="mb-3">
+                    <h4 class="fs-5">Program Coordinator</h4>
+                    <p class="mb-0">Dr. Jane Smith</p>
+                    <p class="mb-0 text-muted">jane.smith@university.edu</p>
+                    <p class="mb-0 text-muted">(555) 123-4567</p>
+                </div>
+                
+                <div>
+                    <h4 class="fs-5">Department Office</h4>
+                    <p class="mb-0">@Model.Department?.DepartmentName</p>
+                    <p class="mb-0 text-muted">Building A, Room 101</p>
+                    <p class="mb-0 text-muted">office@department.edu</p>
+                </div>
+            </div>
+            
+            <!-- Related Programs -->
+            <div class="bg-white rounded shadow-sm p-4">
+                <h3 class="fs-4 mb-3">Related Programs</h3>
+                
+                <div class="mb-3 pb-3 border-bottom">
+                    <h4 class="fs-5 mb-1">Advanced Studies in @Model.Department?.DepartmentName</h4>
+                    <p class="mb-2 small text-muted">ADV@(Model.CourseCode)</p>
+                    <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                </div>
+                
+                <div class="mb-3 pb-3 border-bottom">
+                    <h4 class="fs-5 mb-1">Introduction to @Model.Department?.DepartmentName</h4>
+                    <p class="mb-2 small text-muted">INT@(Model.CourseCode)</p>
+                    <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                </div>
+                
+                <div>
+                    <h4 class="fs-5 mb-1">@Model.Department?.DepartmentName Specialization</h4>
+                    <p class="mb-2 small text-muted">SPC@(Model.CourseCode)</p>
+                    <a href="#" class="btn btn-sm btn-outline-primary">View Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Program Reviews Section -->
+    <div class="bg-white rounded shadow-sm p-4 mt-4">
+        <h2 class="border-bottom pb-3 mb-4">Student Reviews</h2>
+        
+        <div class="d-flex align-items-center mb-4">
+            <div class="me-3">
+                <span class="display-4 fw-bold">4.7</span>
+            </div>
+            <div class="me-3">
+                <div class="mb-1">
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-fill text-warning"></i>
+                    <i class="bi bi-star-half text-warning"></i>
+                </div>
+                <span class="text-muted">Based on 56 reviews</span>
+            </div>
+            <div class="ms-auto">
+                <button class="btn btn-outline-primary">Write a Review</button>
+            </div>
+        </div>
+        
+        <!-- Sample Reviews -->
+        <div class="mb-4 pb-4 border-bottom">
+            <div class="d-flex mb-2">
+                <div class="me-2">
+                    <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                        <span>JS</span>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="fs-5 mb-0">John Smith</h4>
+                    <div class="mb-1">
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                    </div>
+                    <p class="text-muted small">Completed in 2024</p>
+                </div>
+            </div>
+            <p class="mb-0">This program exceeded my expectations. The faculty was knowledgeable and supportive, and the curriculum was well-structured. I gained valuable skills that helped me secure a position in my desired field immediately after graduation.</p>
+        </div>
+        
+        <div>
+            <div class="d-flex mb-2">
+                <div class="me-2">
+                    <div class="bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 48px; height: 48px;">
+                        <span>MD</span>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="fs-5 mb-0">Maria Davis</h4>
+                    <div class="mb-1">
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star-fill text-warning"></i>
+                        <i class="bi bi-star text-warning"></i>
+                    </div>
+                    <p class="text-muted small">Completed in 2023</p>
+                </div>
+            </div>
+            <p class="mb-0">A challenging but rewarding program. The hands-on projects were particularly valuable, giving me practical experience that I now use daily in my career. The only improvement I'd suggest is more industry partnerships for internships.</p>
+        </div>
+        
+        <div class="text-center mt-4">
+            <a href="#" class="btn btn-outline-secondary">See All Reviews</a>
+        </div>
+    </div>
+    
+    <!-- CTA Section -->
+    <div class="bg-primary text-white rounded shadow-sm p-5 mt-4 text-center">
+        <h2 class="mb-3">Ready to Take the Next Step?</h2>
+        <p class="lead mb-4">Join @Model.CurrentEnrollment other students already enrolled in this program</p>
+        @if (Model.IsAvailableForEnrollment && Model.CurrentEnrollment < Model.MaxCapacity)
+        {
+            <button class="btn btn-light btn-lg me-2">Apply Now</button>
+            <button class="btn btn-outline-light btn-lg">Request Information</button>
+        }
+        else if (Model.IsAvailableForEnrollment && Model.CurrentEnrollment >= Model.MaxCapacity)
+        {
+            <button class="btn btn-warning btn-lg me-2">Join Waitlist</button>
+            <button class="btn btn-outline-light btn-lg">Request Information</button>
+        }
+        else
+        {
+            <button class="btn btn-light btn-lg me-2">Get Notified</button>
+            <button class="btn btn-outline-light btn-lg">Request Information</button>
+        }
+    </div>
+</div>
+
+@* @section Scripts {
+    <script>
+        // Add any JavaScript needed for interactions
+        $(document).ready(function() {
+            // Example: Enable tooltips
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            });
+        });
+    </script>
+} *@
